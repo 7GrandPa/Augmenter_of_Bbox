@@ -1,5 +1,5 @@
 # Augmenter_of_Bbox
-Augment the bbox only in the object detection images using imgaug module
+Augment bbox-only patch or the whole images using imgaug module
 
 # start
 See gb_data_augmentor.py, 
