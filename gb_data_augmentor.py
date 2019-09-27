@@ -97,7 +97,14 @@ def apply(imgs, batch_bbs):
 
 if __name__=="__main__":
     import cv2
-    img = cv2.imread('./data_loader/d4236121.jpg')
+	import os
+	in_dir = 'in_data'
+	out_dir = 'out_data'
+	read_path = os.path.join(in_dir, 'd4236121.jpg')
+    img = cv2.imread(read_path)
     bbs = [[187, 93, 511, 341], [0, 0, 88, 50]]
 
-    im_aug, bbs_aug = apply([img], batch_bbs=[bbs])
+    ims_aug, bbs_aug = apply([img], batch_bbs=[bbs])
+	for i, im_aug in enumerate(ims_aug):
+		save_path = os.path.join(out_dir, str(i)+'.jpg')
+		cv2.imwrite(save_path, im_aug)
