@@ -7,4 +7,4 @@ See gb_data_augmentor.py,
 2. Sequential_add_bbs_only(...., bbox_only=[0,1,0,1], 1 means corresponding augmenter operate bbox_only.
 3. augment the images, and finally you'll get the images and bboxes after aug.
 
-![image](https://github.com/7GrandPa/Augmenter_of_Bbox/blob/master/1.jpg)
+![image](https://github.com/7GrandPa/Augmenter_of_Bbox/blob/master/out_data/1.jpg)
