@@ -49,8 +49,13 @@ class Sequential_add_bbs_only(iaa.Sequential):
                         # optimize the aug_bb_coord in case the coord out of the bbox patch size
                         aug_bb_coord = aug_bb_coord.remove_out_of_image().clip_out_of_image()
                         # add relative coord to the whole image coord, offset of left-top coord
-                        self.batch_bbs[j].bounding_boxes[k] = self.add_bbs(self.batch_bbs[j].bounding_boxes[k],
+                        if aug_bb_coord.bounding_boxes.__len__() != 0:
+                            self.batch_bbs[j].bounding_boxes[k] = self.add_bbs(self.batch_bbs[j].bounding_boxes[k],
                                                                       aug_bb_coord.bounding_boxes[0])
+                        else:
+                            self.batch_bbs[j].bounding_boxes[k] = []
+                    self.batch_bbs[j].bounding_boxes = list(filter(lambda x:x!=[], self.batch_bbs[j].bounding_boxes))
+
             else:
                 # no need to extract the bbox patch, do augment on iterables of images and bounding boxes
                 self.ims, self.batch_bbs = self.augmenters[i](images=self.ims, bounding_boxes=self.batch_bbs)
