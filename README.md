@@ -1,4 +1,5 @@
 # Augmenter_of_Bbox
+reference: Learning Data Augmentation Strategies for Object Detection
 Augment bbox-only patch or the whole images using imgaug module
 
 # start
